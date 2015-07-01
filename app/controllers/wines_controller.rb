@@ -1,8 +1,12 @@
 class WinesController <ApplicationController
   def index
     # binding.pry
-    @sort_order = (params[:sort_order])
-    # binding.pry
+    if (params[:sort_order])
+      @sort_order = (params[:sort_order])
+    else
+      @sort_order = "name"
+    end
+    
     @wines = Wine.all.sort_by {|wine| wine.public_send(@sort_order) }
     # binding.pry
     # @random_wine = Wine.find(rand(@wines.size))
