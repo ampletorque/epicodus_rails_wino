@@ -23,6 +23,7 @@ class Wine < ActiveRecord::Base
 
 
 
+
   scope :sorted_by, lambda { |sort_option|
     # extract the sort direction from the param value.
     direction = (sort_option =~ /desc$/) ? 'desc' : 'asc'

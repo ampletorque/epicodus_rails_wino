@@ -3,6 +3,10 @@
 <div class ="container">
   <h1>Wines</h1>
 
+    <h2>Featured Wine!</h2>
+    <h4><img src="<%= @random_wine.label %>" height="200"></h4>
+    <h4><%= @random_wine.name %></h4>
+
     <ul>
       <% @wines.each do |wine| %>
       <li><%= link_to wine.name, wine_path(wine) %> | rating: <%= wine.average_rating %> | year: <%= wine.year %> | grapes: <%= wine.grapes %> </li>

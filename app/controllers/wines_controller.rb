@@ -4,6 +4,10 @@ class WinesController <ApplicationController
     @sort_order = (params[:sort_order])
     # binding.pry
     @wines = Wine.all.sort_by {|wine| wine.public_send(@sort_order) }
+    # binding.pry
+    # @random_wine = Wine.find(rand(@wines.size))
+    @random_wine = Wine.order("RANDOM()").first
+# binding.pry;
     # @wines = Wine.all.sort_by {|wine| wine.average_rating }
     # @wines_rating = Wine.order(:rating)
     # @wines_year = Wine.order(:year)
