@@ -1,0 +1,37 @@
+<% content_for(:title, "Wines in Wino") %>
+
+<h1><%= @wine.name %></h1>
+<h4><%= @wine.winery %></h4>
+<h4><%= @wine.year %></h4>
+<h4><%= @wine.grapes %></h4>
+<h4><img src="<%= @wine.label %>"></h4>
+
+
+<% if @wine.reviews.any? %>
+  <h4>Your wine reviews, wino:</h4>
+
+  <ul>
+    <% @wine.reviews.each do |review| %>
+    <li>
+      <%= review.user %>:
+      <%= review.rating %>/5:
+      <%= review.description %>
+
+
+      <%= link_to "Edit", edit_wine_review_path(@wine, review) %>
+      <%= link_to "Delete", wine_review_path(@wine, review),
+              :data => {:confirm => "Are you sure?",
+              :method => "delete"} %>
+    </li>
+    <% end %>
+  </ul>
+  <% else %>
+  <p>No wine reviews yet.</p>
+  <% end %>
+
+  <p><%= link_to "Add a review", new_wine_review_path(@wine) %></p>
+  <p><%= link_to "Delete Wine", wine_path(@wine),
+              :data => {:confirm => "Are you sure?",
+              :method => "delete"} %> </p>
+
+  <p><%= link_to "Return to wines", wines_path %></p>
