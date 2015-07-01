@@ -5,13 +5,13 @@
 
     <ul>
       <% @wines.each do |wine| %>
-      <li><%= link_to wine.name, wine_path(wine) %></li>
+      <li><%= link_to wine.name, wine_path(wine) %> | rating: <%= wine.average_rating %> | year: <%= wine.year %> | grapes: <%= wine.grapes %> </li>
       <% end %>
     </ul>
 
-      <p><%= link_to "alphabetical order", wines_path(@wines_alpha) %></p>
-      <p><%= link_to "date order", wines_path(@wines_date) %></p>
-      <p><%= sortable "rating order", wines_path(@wines_path) %></p>
+      <p><%= link_to "alphabetical order", wines_path(sort_order: "name"), method: :get %></p>
+      <p><%= link_to "rating order", wines_path(sort_order: "average_rating"), method: :get %></p>
+      <p><%= link_to "year order", wines_path(sort_order: "year"), method: :get %></p>
 
 
     <p>

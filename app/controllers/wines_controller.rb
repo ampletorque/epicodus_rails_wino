@@ -1,9 +1,16 @@
 class WinesController <ApplicationController
   def index
-    @wines = Wine.all
-    @wines_rating = Wine.order(:rating)
-    @wines_date = Wine.order(:updated_at)
-    @wines_alpha = Wine.order(:name)
+    # binding.pry
+    @sort_order = (params[:sort_order])
+    # binding.pry
+    @wines = Wine.all.sort_by {|wine| wine.public_send(@sort_order) }
+    # @wines = Wine.all.sort_by {|wine| wine.average_rating }
+    # @wines_rating = Wine.order(:rating)
+    # @wines_year = Wine.order(:year)
+    # @wines_alpha = Wine.order(:name)
+    # @wines_average_rating = Wine.average_rating
+    # @wine_sorted = Wine.wine_sorted()
+
   end
 
   def new
