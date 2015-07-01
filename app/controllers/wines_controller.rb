@@ -1,6 +1,9 @@
 class WinesController <ApplicationController
   def index
     @wines = Wine.all
+    @wines_rating = Wine.order(:rating)
+    @wines_date = Wine.order(:updated_at)
+    @wines_alpha = Wine.order(:name)
   end
 
   def new

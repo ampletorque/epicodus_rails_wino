@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
+  root :to => 'wines#index'
 
-  resources :wines do
-    resources :reviews
+  resources :wines, :only => [:edit, :index, :new, :show, :destroy] do
+    resources :reviews, :only => [:edit, :new, :show, :destroy]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
