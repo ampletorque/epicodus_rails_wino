@@ -10,6 +10,7 @@ gem 'turbolinks'
 gem 'bootstrap-sass'
 gem 'bootswatch-rails'
 gem 'pry'
+gem 'textacular', '~> 3.0'
 
 group :development do
   gem 'byebug'

@@ -6,19 +6,15 @@ class WinesController <ApplicationController
     else
       @sort_order = "name"
     end
-    
-    @wines = Wine.all.sort_by {|wine| wine.public_send(@sort_order) }
-    # binding.pry
-    # @random_wine = Wine.find(rand(@wines.size))
-    @random_wine = Wine.order("RANDOM()").first
-# binding.pry;
-    # @wines = Wine.all.sort_by {|wine| wine.average_rating }
-    # @wines_rating = Wine.order(:rating)
-    # @wines_year = Wine.order(:year)
-    # @wines_alpha = Wine.order(:name)
-    # @wines_average_rating = Wine.average_rating
-    # @wine_sorted = Wine.wine_sorted()
 
+    @wines = Wine.all.sort_by {|wine| wine.public_send(@sort_order) }
+    @random_wine = Wine.order("RANDOM()").first
+
+  end
+
+  def search
+    # @results = Wine.basic_search(params)
+    binding.pry
   end
 
   def new
